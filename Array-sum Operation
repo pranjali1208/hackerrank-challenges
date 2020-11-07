@@ -1,0 +1,25 @@
+# create an array on size N and initialize it with 1,2,3,....N
+    # Find out if opi is a part of array
+    # if opinis the part of the array , swap the first and last element of the array and give the     
+    #sum of the elements of the array.
+    # else replace the last element with opi and give sum.
+    result = list(range(len(op)))
+    result[0] =  ((N * (N + 1)) // 2)
+    first_element = 1
+    last_element = N
+    #array = list(range(1,N+1))
+    for j in range(len(op)):
+        if (op[j] == first_element) or (op[j] == last_element) or (op[j] >= 2 and op[j] <= N -1):
+            temp = first_element
+            first_element = last_element
+            last_element = temp
+            # op is found in array
+            #swap first_element and last_element # Here only swapping is required. Hence, no change in result
+        else :
+            #N == op[j]
+            # op is not found
+            result[j] = result[j] - last_element + op[j]
+            last_element = op[j]# Here we need to replace the last element. Hence, result is changing.
+        if j + 1 < len(op):
+            result[j + 1] = result[j]
+    return result
